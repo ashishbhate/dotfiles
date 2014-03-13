@@ -1,0 +1,17 @@
+## Generate C tags with function prototypes and local variables
+ctags --C-kinds=+pl *
+
+## Nearly everything for ctags
+## see ctags --list-kinds=c
+## -R for recursive
+ctags-exuberant --C-kinds=+defglmpstuvx *
+
+### Vim
+## Go to Tag
+C-]
+
+## Return to previous file postion
+C-t
+
+## Open Tag in new split
+C-w C-]
