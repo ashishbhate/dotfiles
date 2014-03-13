@@ -67,7 +67,7 @@ set completeopt=menu,menuone
 " Limit popup menu height
 set pumheight=20
 
-set tags+=~/.vim/ctags
+set tags+=./tags;
 map! <C-a> <C-x><C-u><C-p>
 
 set list listchars=tab:»·,trail:·
