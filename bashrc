@@ -109,20 +109,21 @@ fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+#export PATH=/home/ab/bin:$PATH
+
 ## GIT
-export PATH=/home/ab/bin:$PATH
 export PS1=${PS1}'$(__git_ps1 "(%s): ")'
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 # EPD paths and aliases
 export PATHNOR=$PATH
-export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin/:$PATH
-export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin/:$PATH
-export PATHANA64=/home/ab/anaconda/bin/:$PATH
+export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
+export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
+export PATHANA64=/home/ab/anaconda/bin:$PATH
 PSN=$PS1
 #
-alias envnor='export PATH=$PATHNOR; echo $PATH;export PS1=$PSN'
-alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD64\$ \[\033[00m\]"'
+alias envnor='export PATH=$PATHNOR; echo $PATH;export PS1=$PSN;unalias vim'
+alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD64\$ \[\033[00m\]"; alias vim="/home/ab/root/bin/vim"'
 alias envepd32='export PATH=$PATHEPD32; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD32\$ \[\033[00m\]"'
 alias envana64='export PATH=$PATHANA64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ANA64\$ \[\033[00m\]"'
 
@@ -132,10 +133,13 @@ alias envrvm='source $HOME/.rvm/scripts/rvm; echo $PATH; rvm use ruby-1.9.2-p320
 export PATH=$PATHNOR
 ######
 
-alias todo='vim /home/ab/AB/Documents/lists/today'
+alias todo='vim note:todo'
+alias rl='vim note:readinglist'
 alias o='/usr/bin/kde-open'
 alias getip='wget -q -O - checkip.dyndns.org | sed -e "s/[^[:digit:]|.]//g"'
 alias grep="grep --color"
+alias tmux="tmux -2u"
+alias vimepd64="/home/ab/root/bin/vim"
 
 ######
 
@@ -146,6 +150,7 @@ export CDPATH=.:~:~/Enthought/Code
 stty werase undef
 bind '\C-w:unix-filename-rubout'
 
+COMMAND_NOT_FOUND_AUTO=1
 #function limll {
 #    limit=${1:-20}
 #    ls -l | head -n $limit

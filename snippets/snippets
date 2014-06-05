@@ -1,10 +1,16 @@
 ## Generate C tags with function prototypes and local variables
 ctags --C-kinds=+pl *
 
-## Nearly everything for ctags
+## Nearly everything for C
 ## see ctags --list-kinds=c
 ## -R for recursive
 ctags-exuberant --C-kinds=+defglmpstuvx *
+
+## Nearly everything for python except imports (-i).
+## including imports messes things up
+## see ctags --list-kinds=python
+## -R for recursive
+ctags-exuberant -R --python-kinds=cfmv-i .
 
 ### Vim
 ## Go to Tag
