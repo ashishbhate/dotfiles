@@ -13,7 +13,10 @@ set cc=80
 let mapleader=","
 nnoremap ; :
 "colorscheme Tomorrow-Night-Bright
-colorscheme jellybeans
+"colorscheme jellybeans
+set background=dark
+colorscheme molokai
+let g:rehash256 = 1
 let g:airline_theme='simple'
 
 " Vundle
@@ -24,7 +27,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'bling/vim-airline'
 
-Bundle 'nerdtree'
+Bundle 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
 
 Bundle 'taglist.vim'
@@ -49,6 +52,8 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'git-time-lapse'
 map <leader>gt :call TimeLapse() <cr>
 
+Bundle 'airblade/vim-gitgutter'
+
 Bundle 'vim-scripts/vimwiki'
 let g:vimwiki_folding = 'expr'
 nmap <leader>tt <Plug>VimwikiToggleListItem
@@ -61,6 +66,8 @@ Bundle 'Rip-Rip/clang_complete'
 let g:clang_use_library = 1
 let g:clang_library_path = "/usr/lib/x86_64-linux-gnu/"
 " Make sure libclang.so exists. If not, create a symlink.
+
+Bundle 'fisadev/fisa-vim-colorscheme'
 
 filetype on
 filetype plugin on
@@ -93,12 +100,13 @@ hi Search ctermbg=darkred
 hi Search ctermfg=black
 highlight LineNr ctermfg=red
 highlight LineNr ctermbg=none
+highlight SignColumn ctermbg=none
 hi ColorColumn ctermbg=234
 
-set wrap
-set textwidth=80
-set colorcolumn=+1
-set fo+=t
+"set wrap
+"set textwidth=80
+"set colorcolumn=+1
+"set fo+=t
 " explicit wrapping for xml files
 autocmd filetype xml set fo+=t
 
@@ -108,8 +116,13 @@ autocmd filetype xml set fo+=t
 "" supertab
 let g:SuperTabDefaultCompletionType = "context"
 
+" Jedi python complete
+let g:jedi#popup_on_dot=0
+let g:jedi#completions_command = "<C-d>"
+
 "" Clang complete
 let g:clang_auto_select=2
+let g:clang_complete_macros=1
 set conceallevel=0
 "set concealcursor=inv
 let g:clang_snippets=1
@@ -122,7 +135,3 @@ set completeopt=menu,menuone
 " Limit popup menu height
 set pumheight=20
 map! <C-a> <C-x><C-u><C-p>
-
-" Jedi python complete
-let g:jedi#popup_on_dot=0
-let g:jedi#completions_command = "<C-d>"
