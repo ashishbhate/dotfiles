@@ -143,7 +143,7 @@ alias vimepd64="/home/ab/root/bin/vim"
 
 ######
 
-export CDPATH=.:~:~/Enthought/Code
+#export CDPATH=.:~:~/Enthought/Code
 
 ######
 # ctrl+w deletes till slash not whitespace
