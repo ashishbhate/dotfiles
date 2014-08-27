@@ -40,12 +40,12 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'tpope/vim-fugitive'
 
-Bundle 'xolox/vim-misc'
+"Bundle 'xolox/vim-misc'
 
-Bundle 'xolox/vim-notes'
-let g:notes_directories = ['~/AB/Documents/lists/notes/']
-let g:notes_tab_indents = 0
-let g:notes_smart_quotes = 0
+"Bundle 'xolox/vim-notes'
+"let g:notes_directories = ['~/AB/Documents/lists/notes/']
+"let g:notes_tab_indents = 0
+"let g:notes_smart_quotes = 0
 
 Bundle 'Raimondi/delimitMate'
 
@@ -59,6 +59,7 @@ let g:vimwiki_folding = 'expr'
 nmap <leader>tt <Plug>VimwikiToggleListItem
 
 Bundle 'davidhalter/jedi-vim'
+Bundle 'nvie/vim-flake8'
 
 Bundle 'ervandew/supertab'
 
@@ -103,12 +104,15 @@ highlight LineNr ctermbg=none
 highlight SignColumn ctermbg=none
 hi ColorColumn ctermbg=234
 
+hi Search guibg=darkred
+hi Search guifg=black
+highlight LineNr guifg=red
 "set wrap
 "set textwidth=80
 "set colorcolumn=+1
 "set fo+=t
 " explicit wrapping for xml files
-autocmd filetype xml set fo+=t
+"autocmd filetype xml set fo+=t
 
 
 " Completions
