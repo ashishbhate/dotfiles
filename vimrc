@@ -70,6 +70,8 @@ let g:clang_library_path = "/usr/lib/x86_64-linux-gnu/"
 
 Bundle 'fisadev/fisa-vim-colorscheme'
 
+Bundle 'tpope/vim-obsession'
+
 filetype on
 filetype plugin on
 filetype indent on

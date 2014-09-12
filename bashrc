@@ -116,6 +116,7 @@ export PS1=${PS1}'$(__git_ps1 "(%s): ")'
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 # EPD paths and aliases
+export PATH=$PATH:/home/ab/root/bin
 export PATHNOR=$PATH
 export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
 export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
