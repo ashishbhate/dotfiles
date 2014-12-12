@@ -121,12 +121,18 @@ export PATHNOR=$PATH
 export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
 export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
 export PATHANA64=/home/ab/anaconda/bin:$PATH
+export PATHARM=/usr/arm-none-eabi/bin:$PATH
+export PATHPYPY=/home/ab/Code/pypy-2.4.0-linux64/bin:$PATH
 PSN=$PS1
 #
 alias envnor='export PATH=$PATHNOR; echo $PATH;export PS1=$PSN;unalias vim'
 alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD64\$ \[\033[00m\]"; alias vim="/home/ab/root/bin/vim"'
 alias envepd32='export PATH=$PATHEPD32; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD32\$ \[\033[00m\]"'
 alias envana64='export PATH=$PATHANA64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ANA64\$ \[\033[00m\]"'
+alias envpypy='export PATH=$PATHPYPY; echo $PATH; export PS1=$PS1"\[\033[1;31m\]PYPY\$ \[\033[00m\]"'
+
+# ARM GCC
+alias envarm='export PATH=$PATHARM; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ARM\$ \[\033[00m\]"'
 
 # RVM shenanigans
 alias envrvm='source $HOME/.rvm/scripts/rvm; echo $PATH; rvm use ruby-1.9.2-p320@vagrant-1.2.x; rvm use ruby-1.9.2-p320@veewee; export PS1=$PS1"\[\033[1;31m\]ENVRVM\$ \[\033[00m\]"'
@@ -150,6 +156,7 @@ shopt -s autocd
 ######
 
 #export CDPATH=.:~:~/Enthought/Code
+export CDPATH=.:~
 
 ######
 # ctrl+w deletes till slash not whitespace
