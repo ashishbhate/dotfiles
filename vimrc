@@ -26,12 +26,14 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
 
 Bundle 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
 
-Bundle 'taglist.vim'
-map <C-l> :TlistToggle<CR>
+Bundle 'majutsushi/tagbar'
+"Bundle 'taglist.vim'
+map <C-l> :TagbarToggle<CR>
 
 Bundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
@@ -47,6 +49,9 @@ Bundle 'tpope/vim-fugitive'
 "let g:notes_tab_indents = 0
 "let g:notes_smart_quotes = 0
 
+" Fix slow yaml
+Bundle 'stephpy/vim-yaml'
+
 Bundle 'Raimondi/delimitMate'
 
 Bundle 'git-time-lapse'
@@ -59,7 +64,13 @@ let g:vimwiki_folding = 'expr'
 nmap <leader>tt <Plug>VimwikiToggleListItem
 
 Bundle 'davidhalter/jedi-vim'
+
 Bundle 'nvie/vim-flake8'
+let g:flake8_show_in_gutter=1
+let g:flake8_show_in_file=1
+let g:flake8_show_quickfix=1
+"autocmd BufWritePost *.py call Flake8()
+
 
 Bundle 'ervandew/supertab'
 
@@ -141,4 +152,8 @@ set completeopt=menu,menuone
 " Limit popup menu height
 set pumheight=20
 map! <C-a> <C-x><C-u><C-p>
+map <C-n> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-j> :vsp<CR> <C-]>
+map <C-k> :tab split<CR> <C-]>
 au BufReadCmd *.egg call zip#Browse(expand("<amatch>"))
+au BufReadCmd *.whl call zip#Browse(expand("<amatch>"))
