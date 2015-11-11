@@ -59,9 +59,9 @@ map <leader>gt :call TimeLapse() <cr>
 
 Bundle 'airblade/vim-gitgutter'
 
-Bundle 'vim-scripts/vimwiki'
-let g:vimwiki_folding = 'expr'
-nmap <leader>tt <Plug>VimwikiToggleListItem
+"Bundle 'vim-scripts/vimwiki'
+"let g:vimwiki_folding = 'expr'
+"nmap <leader>tt <Plug>VimwikiToggleListItem
 
 Bundle 'davidhalter/jedi-vim'
 
@@ -135,7 +135,8 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " Jedi python complete
 let g:jedi#popup_on_dot=0
-let g:jedi#completions_command = "<C-d>"
+let g:jedi#completions_command="<C-d>"
+let g:jedi#use_tabs_not_buffers=1
 
 "" Clang complete
 let g:clang_auto_select=2

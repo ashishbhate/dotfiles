@@ -50,7 +50,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\e[m\]@\[\033[1;33m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\e[m\]@\[\033[1;33m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[\033[1;35m\][\t]\[\033[00m\]$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -122,14 +122,12 @@ export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
 export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
 export PATHANA64=/home/ab/anaconda/bin:$PATH
 export PATHARM=/usr/arm-none-eabi/bin:$PATH
-export PATHPYPY=/home/ab/Code/pypy-2.4.0-linux64/bin:$PATH
 PSN=$PS1
 #
 alias envnor='export PATH=$PATHNOR; echo $PATH;export PS1=$PSN;unalias vim'
 alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD64\$ \[\033[00m\]"; alias vim="/home/ab/root/bin/vim"'
 alias envepd32='export PATH=$PATHEPD32; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD32\$ \[\033[00m\]"'
 alias envana64='export PATH=$PATHANA64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ANA64\$ \[\033[00m\]"'
-alias envpypy='export PATH=$PATHPYPY; echo $PATH; export PS1=$PS1"\[\033[1;31m\]PYPY\$ \[\033[00m\]"'
 
 # ARM GCC
 alias envarm='export PATH=$PATHARM; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ARM\$ \[\033[00m\]"'
