@@ -13,11 +13,35 @@ ctags-exuberant --C-kinds=+defglmpstuvx *
 ctags-exuberant -R --python-kinds=cfmv-i .
 
 ### Vim
+## Convert Split into Tab
+C-w T
+
+## Convert horizontal split to vertical split
+C-w H
+
+## Convert vertical split to horizontal split
+C-w K
+
 ## Go to Tag
 C-]
+g]
 
-## Return to previous file postion
+## Return to previous file position
 C-t
 
-## Open Tag in new split
+## Open Tag in new Horizonatal split
 C-w C-]
+C-w g]
+
+## Open Tag in new tab
+C-w C-] C-w T
+
+## First occurrence of identifier
+[i
+
+## All occurrences of identifier
+[I
+
+##
+# How to make webms
+https://gist.github.com/ndarville/10010916

@@ -2,7 +2,8 @@ set t_Co=256
 set backspace=indent,eol,start
 let g:airline_powerline_fonts=1
 set laststatus=2
-set relativenumber
+"set relativenumber
+set nu
 set wildmenu
 set wildmode=list:longest,full
 set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
@@ -18,6 +19,7 @@ set background=dark
 colorscheme molokai
 let g:rehash256 = 1
 let g:airline_theme='simple'
+
 
 " Vundle
 filetype off
@@ -36,7 +38,14 @@ Bundle 'majutsushi/tagbar'
 map <C-l> :TagbarToggle<CR>
 
 Bundle 'scrooloose/syntastic'
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
 Bundle 'scrooloose/nerdcommenter'
 
@@ -69,7 +78,7 @@ Bundle 'nvie/vim-flake8'
 let g:flake8_show_in_gutter=1
 let g:flake8_show_in_file=1
 let g:flake8_show_quickfix=1
-"autocmd BufWritePost *.py call Flake8()
+autocmd BufWritePost *.py call Flake8()
 
 
 Bundle 'ervandew/supertab'
@@ -154,7 +163,7 @@ set completeopt=menu,menuone
 set pumheight=20
 map! <C-a> <C-x><C-u><C-p>
 map <C-n> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-map <C-j> :vsp<CR> <C-]>
-map <C-k> :tab split<CR> <C-]>
+"map <C-j> :vsp<CR> <C-]>
+"map <C-k> :tab split<CR> <C-]>
 au BufReadCmd *.egg call zip#Browse(expand("<amatch>"))
 au BufReadCmd *.whl call zip#Browse(expand("<amatch>"))
