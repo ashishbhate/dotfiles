@@ -119,15 +119,15 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export PATH=/home/ab/bin/jdk-8u5-tuxjdk-b08/bin:$PATH:/home/ab/root/bin
 export PATHNOR=$PATH
 export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
-export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
-export PATHANA64=/home/ab/anaconda/bin:$PATH
+#export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
+#export PATHANA64=/home/ab/anaconda/bin:$PATH
 export PATHARM=/usr/arm-none-eabi/bin:$PATH
 PSN=$PS1
 #
 alias envnor='export PATH=$PATHNOR; echo $PATH;export PS1=$PSN;unalias vim'
 alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD64\$ \[\033[00m\]"; alias vim="/home/ab/root/bin/vim"'
-alias envepd32='export PATH=$PATHEPD32; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD32\$ \[\033[00m\]"'
-alias envana64='export PATH=$PATHANA64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ANA64\$ \[\033[00m\]"'
+#alias envepd32='export PATH=$PATHEPD32; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD32\$ \[\033[00m\]"'
+#alias envana64='export PATH=$PATHANA64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ANA64\$ \[\033[00m\]"'
 
 # ARM GCC
 alias envarm='export PATH=$PATHARM; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ARM\$ \[\033[00m\]"'

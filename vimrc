@@ -18,7 +18,11 @@ nnoremap ; :
 set background=dark
 colorscheme molokai
 let g:rehash256 = 1
-let g:airline_theme='simple'
+
+if isdirectory($HOME . '/.vim/swap') == 0
+  :silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
+endif
+set directory=~/.vim/swap//
 
 
 " Vundle
@@ -37,15 +41,17 @@ Bundle 'majutsushi/tagbar'
 "Bundle 'taglist.vim'
 map <C-l> :TagbarToggle<CR>
 
-Bundle 'scrooloose/syntastic'
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"Bundle 'scrooloose/syntastic'
+"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 0
 "let g:syntastic_check_on_wq = 0
+
+Bundle 'vim-airline/vim-airline-themes'
 
 Bundle 'scrooloose/nerdcommenter'
 
@@ -97,7 +103,7 @@ filetype plugin on
 filetype indent on
 syntax on
 
-set tags+=./tags;
+set tags+=./tags;/home/ab/.vim/ctags;
 
 " indentation rules for FFmpeg: 4 spaces, no tabs
 set expandtab
@@ -136,6 +142,8 @@ highlight LineNr guifg=red
 " explicit wrapping for xml files
 "autocmd filetype xml set fo+=t
 
+let g:airline_theme='simple'
+
 
 " Completions
 
@@ -145,7 +153,8 @@ let g:SuperTabDefaultCompletionType = "context"
 " Jedi python complete
 let g:jedi#popup_on_dot=0
 let g:jedi#completions_command="<C-d>"
-let g:jedi#use_tabs_not_buffers=1
+"let g:jedi#use_tabs_not_buffers=1
+let g:jedi#use_splits_not_buffers="right"
 
 "" Clang complete
 let g:clang_auto_select=2
