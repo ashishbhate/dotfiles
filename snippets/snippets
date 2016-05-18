@@ -1,23 +1,10 @@
-## Generate C tags with function prototypes and local variables
-ctags --C-kinds=+pl *
-
-## Nearly everything for C
-## see ctags --list-kinds=c
-## -R for recursive
-ctags-exuberant --C-kinds=+defglmpstuvx *
-
-## Nearly everything for python except imports (-i).
-## including imports messes things up
-## see ctags --list-kinds=python
-## -R for recursive
-ctags-exuberant -R --python-kinds=cfmv-i .
-
 ### Vim
 ## Convert Split into Tab
 C-w T
 
 ## Convert horizontal split to vertical split
 C-w H
+C-w L
 
 ## Convert vertical split to horizontal split
 C-w K
@@ -42,6 +29,36 @@ C-w C-] C-w T
 ## All occurrences of identifier
 [I
 
+## Open file under cursor in new split
+C-w f
+
+## Generate C tags with function prototypes and local variables
+ctags --C-kinds=+pl *
+
+## Nearly everything for C
+## see ctags --list-kinds=c
+## -R for recursive
+ctags-exuberant --C-kinds=+defglmpstuvx *
+
+## Nearly everything for python except imports (-i).
+## including imports messes things up
+## see ctags --list-kinds=python
+## -R for recursive
+ctags-exuberant -R --python-kinds=cfmv-i .
+
 ##
 # How to make webms
 https://gist.github.com/ndarville/10010916
+
+##
+# Turn off screen
+xset dpms force off
+
+##
+# Open two different versions of the same file in a diff tool using git
+git difftool -tool=meld <from-branch> <to-branch> -- <file>
+
+##
+# Pushbullet notifications from cli
+curl -u <API-KEY> https://api.pushbullet.com/v2/pushes -d type=note -d title="Message" -d device_iden=<DEVICE-KEY>
+
