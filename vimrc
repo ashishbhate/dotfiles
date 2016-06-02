@@ -14,9 +14,8 @@ set cc=80
 let mapleader=","
 nnoremap ; :
 "colorscheme Tomorrow-Night-Bright
-"colorscheme jellybeans
 set background=dark
-colorscheme molokai
+colorscheme jellybeans
 let g:rehash256 = 1
 
 if isdirectory($HOME . '/.vim/swap') == 0
@@ -57,6 +56,7 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'tpope/vim-fugitive'
 
+Bundle 'will133/vim-dirdiff'
 "Bundle 'xolox/vim-misc'
 
 "Bundle 'xolox/vim-notes'
