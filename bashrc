@@ -140,21 +140,22 @@ export PATH=$PATHNOR
 
 alias todo='vim note:todo'
 alias rl='vim note:readinglist'
-alias o='/usr/bin/kde-open'
+alias o='/usr/bin/xdg-open'
 #alias getip='wget -q -O - checkip.dyndns.org | sed -e "s/[^[:digit:]|.]//g"'
 alias getip='curl http://canihazip.com/s'
 alias grep="grep --color"
 alias tmux="tmux -2u"
 alias vimepd64="/home/ab/root/bin/vim"
 alias pls='sudo $(history -p !!)'
-alias up='sudo aptitude update'
-alias ud='sudo aptitude upgrade'
+alias up='sudo apt update'
+alias ud='sudo apt upgrade'
+alias vimpy2='/usr/bin/vim.gnome-py2'
 shopt -s autocd
 
 ######
 
 #export CDPATH=.:~:~/Enthought/Code
-export CDPATH=.:~
+#export CDPATH=.:~
 
 ######
 # ctrl+w deletes till slash not whitespace
@@ -184,4 +185,5 @@ COMMAND_NOT_FOUND_AUTO=1
 #        clear; pwd; limll;
 #    fi
 #}
+
 #complete -d cd

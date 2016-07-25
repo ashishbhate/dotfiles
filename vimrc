@@ -30,8 +30,9 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-Bundle 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
+Plugin 'vim-airline/vim-airline-themes'
 
 Bundle 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
@@ -50,7 +51,6 @@ map <C-l> :TagbarToggle<CR>
 "let g:syntastic_check_on_open = 0
 "let g:syntastic_check_on_wq = 0
 
-Bundle 'vim-airline/vim-airline-themes'
 
 Bundle 'scrooloose/nerdcommenter'
 
@@ -91,7 +91,8 @@ Bundle 'ervandew/supertab'
 
 Bundle 'Rip-Rip/clang_complete'
 let g:clang_use_library = 1
-let g:clang_library_path = "/usr/lib/x86_64-linux-gnu/"
+let g:clang_library_path = "/usr/lib/llvm-3.8/lib"
+"let g:clang_library_path = "/usr/lib/x86_64-linux-gnu/"
 " Make sure libclang.so exists. If not, create a symlink.
 
 Bundle 'fisadev/fisa-vim-colorscheme'
