@@ -39,7 +39,7 @@ map <C-e> :NERDTreeToggle<CR>
 
 Bundle 'majutsushi/tagbar'
 "Bundle 'taglist.vim'
-map <C-l> :TagbarToggle<CR>
+map <C-i> :TagbarToggle<CR>
 
 "Bundle 'scrooloose/syntastic'
 "let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
@@ -98,6 +98,13 @@ let g:clang_library_path = "/usr/lib/llvm-3.8/lib"
 Bundle 'fisadev/fisa-vim-colorscheme'
 
 Bundle 'tpope/vim-obsession'
+
+Plugin 'fatih/vim-go'
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
 
 filetype on
 filetype plugin on

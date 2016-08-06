@@ -136,6 +136,8 @@ alias envarm='export PATH=$PATHARM; echo $PATH; export PS1=$PS1"\[\033[1;31m\]AR
 alias envrvm='source $HOME/.rvm/scripts/rvm; echo $PATH; rvm use ruby-1.9.2-p320@vagrant-1.2.x; rvm use ruby-1.9.2-p320@veewee; export PS1=$PS1"\[\033[1;31m\]ENVRVM\$ \[\033[00m\]"'
 
 export PATH=$PATHNOR
+
+export GOPATH=/home/ab/Code/gocode
 ######
 
 alias todo='vim note:todo'
