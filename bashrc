@@ -151,7 +151,7 @@ alias vimepd64="/home/ab/root/bin/vim"
 alias pls='sudo $(history -p !!)'
 alias up='sudo apt update'
 alias ud='sudo apt upgrade'
-alias vimpy2='/usr/bin/vim.gnome-py2'
+alias vimc='/usr/bin/vim.gnome-py2'
 shopt -s autocd
 
 ######

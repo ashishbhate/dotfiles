@@ -41,15 +41,20 @@ Bundle 'majutsushi/tagbar'
 "Bundle 'taglist.vim'
 map <C-i> :TagbarToggle<CR>
 
-"Bundle 'scrooloose/syntastic'
-"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
+Bundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ["c"], 'passive_filetypes': [] }
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_c_compiler = "gcc"
+let g:syntastic_c_compiler_options = "-Wall -std=gnu89"
+let g:syntastic_c_include_dirs = ["/lib/modules/4.4.0-34-generic/build/include/"]
+let g:syntastic_c_remove_include_errors = 1
 
 
 Bundle 'scrooloose/nerdcommenter'
@@ -111,7 +116,7 @@ filetype plugin on
 filetype indent on
 syntax on
 
-set tags+=./tags;/home/ab/.vim/ctags;
+set tags+=./tags;/home/ab/.vim/tags;
 
 " indentation rules for FFmpeg: 4 spaces, no tabs
 set expandtab

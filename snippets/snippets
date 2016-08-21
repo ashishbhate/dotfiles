@@ -63,5 +63,5 @@ git difftool -tool=meld <from-branch> <to-branch> -- <file>
 #- To get <DEVICE-KEY> visit https://www.pushbullet.com/#devices
 #- Click on device
 #- See URL for <DEVICE-KEY>: https://www.pushbullet.com/#devices/<DEVICE-KEY>
-curl -u <API-KEY>: https://api.pushbullet.com/v2/pushes -d type=note -d title="Message" -d body="body"-d device_iden=<DEVICE-KEY>
+curl -u <API-KEY>: https://api.pushbullet.com/v2/pushes -d type=note -d title="Message" -d body="body" -d device_iden=<DEVICE-KEY>
 
