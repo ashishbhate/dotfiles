@@ -1,6 +1,6 @@
 set t_Co=256
 set backspace=indent,eol,start
-let g:airline_powerline_fonts=1
+"let g:airline_powerline_fonts=1
 set laststatus=2
 "set relativenumber
 set nu
@@ -15,7 +15,8 @@ let mapleader=","
 nnoremap ; :
 "colorscheme Tomorrow-Night-Bright
 set background=dark
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme molokai
 let g:rehash256 = 1
 
 if isdirectory($HOME . '/.vim/swap') == 0
@@ -25,23 +26,26 @@ set directory=~/.vim/swap//
 
 
 " Vundle
+set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Plugin 'vim-airline/vim-airline'
-let g:airline#extensions#tabline#enabled = 1
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'scrooloose/nerdtree'
+"Plugin 'vim-airline/vim-airline'
+"let g:airline#extensions#tabline#enabled = 1
+"Plugin 'vim-airline/vim-airline-themes'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+Plugin 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
 
-Bundle 'majutsushi/tagbar'
-"Bundle 'taglist.vim'
+Plugin 'majutsushi/tagbar'
+"Plugin 'taglist.vim'
 map <C-i> :TagbarToggle<CR>
 
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ["c"], 'passive_filetypes': [] }
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -53,58 +57,61 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_c_compiler = "gcc"
 let g:syntastic_c_compiler_options = "-Wall -std=gnu89"
-let g:syntastic_c_include_dirs = ["/lib/modules/4.4.0-34-generic/build/include/"]
+let g:syntastic_c_include_dirs = ["/lib/modules/4.10.0-19-generic/build/include/"]
 let g:syntastic_c_remove_include_errors = 1
 
 
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
-Bundle 'will133/vim-dirdiff'
-"Bundle 'xolox/vim-misc'
+Plugin 'will133/vim-dirdiff'
+"Plugin 'xolox/vim-misc'
 
-"Bundle 'xolox/vim-notes'
+"Plugin 'xolox/vim-notes'
 "let g:notes_directories = ['~/AB/Documents/lists/notes/']
 "let g:notes_tab_indents = 0
 "let g:notes_smart_quotes = 0
 
 " Fix slow yaml
-Bundle 'stephpy/vim-yaml'
+Plugin 'stephpy/vim-yaml'
 
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 
-Bundle 'git-time-lapse'
+Plugin 'git-time-lapse'
 map <leader>gt :call TimeLapse() <cr>
 
-Bundle 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 
-"Bundle 'vim-scripts/vimwiki'
-"let g:vimwiki_folding = 'expr'
+Plugin 'vim-scripts/vimwiki'
+let g:vimwiki_folding = 'expr'
 "nmap <leader>tt <Plug>VimwikiToggleListItem
 
-Bundle 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 
-Bundle 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8'
 let g:flake8_show_in_gutter=1
 let g:flake8_show_in_file=1
 let g:flake8_show_quickfix=1
 autocmd BufWritePost *.py call Flake8()
 
 
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 
-Bundle 'Rip-Rip/clang_complete'
+Plugin 'Rip-Rip/clang_complete'
 let g:clang_use_library = 1
 let g:clang_library_path = "/usr/lib/llvm-3.8/lib"
 "let g:clang_library_path = "/usr/lib/x86_64-linux-gnu/"
 " Make sure libclang.so exists. If not, create a symlink.
 
-Bundle 'fisadev/fisa-vim-colorscheme'
+Plugin 'fisadev/fisa-vim-colorscheme'
 
-Bundle 'tpope/vim-obsession'
+Plugin 'tpope/vim-obsession'
 
 Plugin 'fatih/vim-go'
+
+call vundle#end()
+
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
@@ -155,7 +162,7 @@ highlight LineNr guifg=red
 " explicit wrapping for xml files
 "autocmd filetype xml set fo+=t
 
-let g:airline_theme='simple'
+"let g:airline_theme='simple'
 
 
 " Completions
@@ -189,3 +196,7 @@ map <C-n> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 "map <C-k> :tab split<CR> <C-]>
 au BufReadCmd *.egg call zip#Browse(expand("<amatch>"))
 au BufReadCmd *.whl call zip#Browse(expand("<amatch>"))
+
+
+" GUI Settings
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
