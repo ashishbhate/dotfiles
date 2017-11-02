@@ -65,3 +65,7 @@ git difftool -tool=meld <from-branch> <to-branch> -- <file>
 #- See URL for <DEVICE-KEY>: https://www.pushbullet.com/#devices/<DEVICE-KEY>
 curl -u <API-KEY>: https://api.pushbullet.com/v2/pushes -d type=note -d title="Message" -d body="body" -d device_iden=<DEVICE-KEY>
 
+##
+# Chrome Proxy
+# First do a: ssh -D 9000 server.com
+google-chrome --proxy-server="socks5://localhost:9000" -host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE localhost"
