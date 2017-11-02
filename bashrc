@@ -91,7 +91,7 @@ alias l='ls -hF'
 alias ll='ls -lahF'
 #alias la='ls -A'
 #alias l='ls -CF'
-alias psg='ps aux | grep'
+alias psg='ps aux | grep -i'
 alias k9='kill -9'
 
 # enable programmable completion features (you don't need to enable
@@ -116,16 +116,27 @@ export PS1=${PS1}'$(__git_ps1 "(%s): ")'
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 # EPD paths and aliases
-export PATH=/home/ab/bin/jdk-8u5-tuxjdk-b08/bin:$PATH:/home/ab/root/bin
 export PATHNOR=$PATH
-export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
+#export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
 #export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
 #export PATHANA64=/home/ab/anaconda/bin:$PATH
 export PATHARM=/usr/arm-none-eabi/bin:$PATH
+export PATHNODE=/home/ab/Learning/LearnNode/node-v7.10.0-linux-x64/bin:$PATH
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_TOOLS=$ANDROID_HOME/tools
+export ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
+export PATHLEARNREACT=/home/ab/Learning/React-Native-Udemy/Software/node-v7.10.0-linux-x64/bin:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS:$PATH
 PSN=$PS1
+
 #
 alias envnor='export PATH=$PATHNOR; echo $PATH;export PS1=$PSN;unalias vim'
-alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD64\$ \[\033[00m\]"; alias vim="/home/ab/root/bin/vim"'
+alias envnode='export PATH=$PATHNODE; echo $PATH; export PS1=$PS1"\[\033[1;31m\]NODE\$ \[\033[00m\]";'
+alias envrn='export PATH=$PATHLEARNREACT; echo $PATH; export PS1=$PS1"\[\033[1;31m\]NODE-RN\$ \[\033[00m\]";'
+
+
+
+
+#alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD64\$ \[\033[00m\]"; alias vim="/home/ab/root/bin/vim"'
 #alias envepd32='export PATH=$PATHEPD32; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD32\$ \[\033[00m\]"'
 #alias envana64='export PATH=$PATHANA64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ANA64\$ \[\033[00m\]"'
 
@@ -133,7 +144,7 @@ alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m
 alias envarm='export PATH=$PATHARM; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ARM\$ \[\033[00m\]"'
 
 # RVM shenanigans
-alias envrvm='source $HOME/.rvm/scripts/rvm; echo $PATH; rvm use ruby-1.9.2-p320@vagrant-1.2.x; rvm use ruby-1.9.2-p320@veewee; export PS1=$PS1"\[\033[1;31m\]ENVRVM\$ \[\033[00m\]"'
+#alias envrvm='source $HOME/.rvm/scripts/rvm; echo $PATH; rvm use ruby-1.9.2-p320@vagrant-1.2.x; rvm use ruby-1.9.2-p320@veewee; export PS1=$PS1"\[\033[1;31m\]ENVRVM\$ \[\033[00m\]"'
 
 export PATH=$PATHNOR
 
@@ -147,11 +158,12 @@ alias o='/usr/bin/xdg-open'
 alias getip='curl http://canihazip.com/s'
 alias grep="grep --color"
 alias tmux="tmux -2u"
-alias vimepd64="/home/ab/root/bin/vim"
+#alias vimepd64="/home/ab/root/bin/vim"
 alias pls='sudo $(history -p !!)'
 alias up='sudo apt update'
 alias ud='sudo apt upgrade'
-alias vimc='/usr/bin/vim.gnome-py2'
+#alias vimc='/usr/bin/vim.gnome-py2'
+alias vimpy2='/usr/bin/vim.gtk-py2'
 shopt -s autocd
 
 ######
@@ -189,3 +201,4 @@ COMMAND_NOT_FOUND_AUTO=1
 #}
 
 #complete -d cd
+bind -x '"\C-g": clear'
