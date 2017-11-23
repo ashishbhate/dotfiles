@@ -29,6 +29,8 @@ let g:SuperTabDefaultCompletionType = "context"
 
 Plugin 'tpope/vim-obsession'
 
+Plugin 'ctrlpvim/ctrlp.vim'
+
 "Plugin 'vim-airline/vim-airline'
 "let g:airline#extensions#tabline#enabled = 1
 "Plugin 'vim-airline/vim-airline-themes'
@@ -74,10 +76,17 @@ autocmd BufWritePost *.py call Flake8()
 
 " Go
 Plugin 'fatih/vim-go'
-au FileType go nmap <Leader>gd <Plug>(go-doc)
+"au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <leader>t  <Plug>(go-test)
+au FileType go nmap <leader>b  <Plug>(go-build)
+au FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 au FileType go set noexpandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
@@ -156,8 +165,8 @@ set conceallevel=0
 set background=dark
 "colorscheme Tomorrow-Night-Bright
 "colorscheme jellybeans
+let g:rehash256=1
 colorscheme molokai
-let g:rehash256 = 1
 set list listchars=tab:»·,trail:·
 " Trailing whitespace are forbidden, so highlight them.
 highlight ForbiddenWhitespace guibg=red ctermbg=red
