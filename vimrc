@@ -1,3 +1,34 @@
+set backspace=indent,eol,start
+set laststatus=2
+"set relativenumber
+set nu
+set cc=80
+set conceallevel=0
+set list listchars=tab:»·,trail:·
+set completeopt=menu,menuone
+set pumheight=20
+set wildmenu
+set wildmode=list:longest,full
+set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
+set timeoutlen=300
+set ttimeoutlen=75
+set hlsearch
+
+let mapleader=","
+nnoremap ; :
+
+set modeline
+set foldlevel=1
+au BufReadCmd *.egg call zip#Browse(expand("<amatch>"))
+au BufReadCmd *.whl call zip#Browse(expand("<amatch>"))
+
+set tags+=./tags;/home/ab/.vim/tags;
+if isdirectory($HOME . '/.vim/swap') == 0
+  :silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
+endif
+set directory=~/.vim/swap//
+
+
 " Vundle
 set nocompatible
 filetype off
@@ -155,26 +186,23 @@ filetype plugin on
 filetype indent on
 syntax on
 
+" This needs to be at the end or the colours get wonky.
 set t_Co=256
-set backspace=indent,eol,start
-set laststatus=2
-"set relativenumber
-set nu
-set cc=80
-set conceallevel=0
 set background=dark
 "colorscheme Tomorrow-Night-Bright
 "colorscheme jellybeans
 let g:rehash256=1
 colorscheme molokai
-set list listchars=tab:»·,trail:·
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+au InsertEnter * set cul
+au InsertLeave * set nocul
 " Trailing whitespace are forbidden, so highlight them.
 highlight ForbiddenWhitespace guibg=red ctermbg=red
 match ForbiddenWhitespace /\s\+$/
 " Do not highlight spaces at the end of line while typing on that line.
 autocmd InsertEnter * match ForbiddenWhitespace /\s\+\%#\@<!$/
-set completeopt=menu,menuone
-set pumheight=20
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
 highlight Search ctermbg=darkred
@@ -183,31 +211,15 @@ highlight LineNr ctermfg=red
 highlight LineNr ctermbg=none
 highlight SignColumn ctermbg=none
 highlight ColorColumn ctermbg=234
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set cindent
+"set cinoptions=(0
 
 " GUI Settings
 set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 highlight Search guibg=darkred
 highlight Search guifg=black
 highlight LineNr guifg=red
-
-set wildmenu
-set wildmode=list:longest,full
-set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
-set timeoutlen=300
-set ttimeoutlen=75
-set hlsearch
-
-let mapleader=","
-nnoremap ; :
-
-set modeline
-set foldlevel=1
-au BufReadCmd *.egg call zip#Browse(expand("<amatch>"))
-au BufReadCmd *.whl call zip#Browse(expand("<amatch>"))
-
-set tags+=./tags;/home/ab/.vim/tags;
-if isdirectory($HOME . '/.vim/swap') == 0
-  :silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
-endif
-set directory=~/.vim/swap//
 

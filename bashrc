@@ -105,57 +105,53 @@ fi
 
 # Binds Up and Down arrow keys to history search narrowed
 # to the partial line already entered (Basically C^r with Up and Down Keys)
-
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-#export PATH=/home/ab/bin:$PATH
+# Binds clear screen ctrl+g
+bind -x '"\C-g": clear'
+
 
 ## GIT
 export PS1=${PS1}'$(__git_ps1 "(%s): ")'
 export GIT_PS1_SHOWDIRTYSTATE=1
 
-# EPD paths and aliases
+export GOROOT=$HOME/bin/go
+export GOPATH=/home/ab/Code/gocode
+
+# Custom paths
+export PATH=$PATH:$GOROOT/bin
 export PATHNOR=$PATH
-#export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
-#export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
-#export PATHANA64=/home/ab/anaconda/bin:$PATH
 export PATHARM=/usr/arm-none-eabi/bin:$PATH
 export PATHNODE=/home/ab/Learning/LearnNode/node-v7.10.0-linux-x64/bin:$PATH
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_TOOLS=$ANDROID_HOME/tools
 export ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
 export PATHLEARNREACT=/home/ab/Learning/React-Native-Udemy/Software/node-v7.10.0-linux-x64/bin:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS:$PATH
-PSN=$PS1
+#export PATH=$PATHNOR
+#export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
+#export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
+#export PATHANA64=/home/ab/anaconda/bin:$PATH
 
-#
+# Custom aliases
+PSN=$PS1
 alias envnor='export PATH=$PATHNOR; echo $PATH;export PS1=$PSN;unalias vim'
 alias envnode='export PATH=$PATHNODE; echo $PATH; export PS1=$PS1"\[\033[1;31m\]NODE\$ \[\033[00m\]";'
 alias envrn='export PATH=$PATHLEARNREACT; echo $PATH; export PS1=$PS1"\[\033[1;31m\]NODE-RN\$ \[\033[00m\]";'
-
-
-
+# ARM GCC
+alias envarm='export PATH=$PATHARM; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ARM\$ \[\033[00m\]"'
 
 #alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD64\$ \[\033[00m\]"; alias vim="/home/ab/root/bin/vim"'
 #alias envepd32='export PATH=$PATHEPD32; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD32\$ \[\033[00m\]"'
 #alias envana64='export PATH=$PATHANA64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ANA64\$ \[\033[00m\]"'
-
-# ARM GCC
-alias envarm='export PATH=$PATHARM; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ARM\$ \[\033[00m\]"'
-
 # RVM shenanigans
 #alias envrvm='source $HOME/.rvm/scripts/rvm; echo $PATH; rvm use ruby-1.9.2-p320@vagrant-1.2.x; rvm use ruby-1.9.2-p320@veewee; export PS1=$PS1"\[\033[1;31m\]ENVRVM\$ \[\033[00m\]"'
-
-export PATH=$PATHNOR
-
-export GOPATH=/home/ab/Code/gocode
-######
 
 alias todo='vim note:todo'
 alias rl='vim note:readinglist'
 alias o='/usr/bin/xdg-open'
 #alias getip='wget -q -O - checkip.dyndns.org | sed -e "s/[^[:digit:]|.]//g"'
-alias getip='curl http://canihazip.com/s'
+alias getip='curl https://canihazip.com/s'
 alias grep="grep --color"
 alias tmux="tmux -2u"
 #alias vimepd64="/home/ab/root/bin/vim"
@@ -167,7 +163,6 @@ alias vimpy2='/usr/bin/vim.gtk-py2'
 shopt -s autocd
 
 ######
-
 #export CDPATH=.:~:~/Enthought/Code
 #export CDPATH=.:~
 
@@ -177,6 +172,7 @@ stty werase undef
 bind '\C-w:unix-filename-rubout'
 
 COMMAND_NOT_FOUND_AUTO=1
+
 #function limll {
 #    limit=${1:-20}
 #    ls -l | head -n $limit
@@ -201,4 +197,4 @@ COMMAND_NOT_FOUND_AUTO=1
 #}
 
 #complete -d cd
-bind -x '"\C-g": clear'
+
