@@ -2,3 +2,8 @@
   tool = default-difftool
 [difftool "default-difftool"]
   cmd = vim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' $LOCAL $REMOTE
+[user]
+	email = bhate.ashish@gmail.com
+	name = Ashish Bhate
+[push]
+	default = simple
