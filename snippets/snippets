@@ -68,4 +68,11 @@ curl -u <API-KEY>: https://api.pushbullet.com/v2/pushes -d type=note -d title="M
 ##
 # Chrome Proxy
 # First do a: ssh -D 9000 server.com
+# google-chrome --proxy-server="socks5://localhost:9999" -host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE localhost" --profile-directory="Default"
 google-chrome --proxy-server="socks5://localhost:9000" -host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE localhost"
+
+##
+# sshfs
+# Good enough for local VMs
+# `-o reconnect -C -o workaround=all` tells sshfs to reconnect when connection drops.
+sshfs -o reconnect -C -o workaround=all ab@agflow.local: agflow/

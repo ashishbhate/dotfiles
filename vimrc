@@ -60,7 +60,9 @@ let g:SuperTabDefaultCompletionType = "context"
 
 Plugin 'tpope/vim-obsession'
 
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf.vim'
+set rtp+=~/root/src/fzf
+nnoremap <silent> <c-\> :Files<CR>
 
 "Plugin 'vim-airline/vim-airline'
 "let g:airline#extensions#tabline#enabled = 1
@@ -129,9 +131,10 @@ let g:go_highlight_functions=1
 let g:go_highlight_methods=1
 let g:go_highlight_operators=1
 let g:go_highlight_structs=1
-let g:go_highlight_types=1
-let g:go_auto_sameids=1
-let g:go_auto_type_info=1
+let g:go_fmt_command = "goimports"
+"let g:go_highlight_types=1
+"let g:go_auto_sameids=1
+"let g:go_auto_type_info=1
 
 
 " C
@@ -193,9 +196,9 @@ set background=dark
 "colorscheme jellybeans
 let g:rehash256=1
 colorscheme molokai
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+"let &t_SI = "\<Esc>[6 q"
+"let &t_SR = "\<Esc>[4 q"
+"let &t_EI = "\<Esc>[2 q"
 au InsertEnter * set cul
 au InsertLeave * set nocul
 " Trailing whitespace are forbidden, so highlight them.

@@ -117,10 +117,13 @@ export PS1=${PS1}'$(__git_ps1 "(%s): ")'
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 export GOROOT=$HOME/bin/go
-export GOPATH=/home/ab/Code/gocode
+export GOBIN=$GOROOT/bin
+export GOPATH=$HOME/Code/gocode
+
+export NODEBIN=$HOME/bin/node/bin
 
 # Custom paths
-export PATH=$PATH:$GOROOT/bin
+export PATH=$HOME/root/bin:$PATH:$GOBIN:$NODEBIN
 export PATHNOR=$PATH
 export PATHARM=/usr/arm-none-eabi/bin:$PATH
 export PATHNODE=/home/ab/Learning/LearnNode/node-v7.10.0-linux-x64/bin:$PATH
@@ -128,6 +131,7 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_TOOLS=$ANDROID_HOME/tools
 export ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
 export PATHLEARNREACT=/home/ab/Learning/React-Native-Udemy/Software/node-v7.10.0-linux-x64/bin:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS:$PATH
+export MANPATH=$HOME/root/share/man:$MANPATH
 #export PATH=$PATHNOR
 #export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
 #export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
@@ -198,3 +202,5 @@ COMMAND_NOT_FOUND_AUTO=1
 
 #complete -d cd
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='ag --hidden -f -g ""'
