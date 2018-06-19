@@ -42,6 +42,7 @@ Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 Plugin 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
+map <C-o> :NERDTreeFind<CR>
 
 Plugin 'majutsushi/tagbar'
 map <C-i> :TagbarToggle<CR>
@@ -53,7 +54,7 @@ Plugin 'will133/vim-dirdiff'
 " Fix slow yaml
 Plugin 'stephpy/vim-yaml'
 
-Plugin 'Raimondi/delimitMate'
+"Plugin 'Raimondi/delimitMate'
 
 Plugin 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
@@ -124,6 +125,7 @@ au FileType go set noexpandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
+au FileType go set cc=97
 let g:go_highlight_build_constraints=1
 let g:go_highlight_extra_types=1
 let g:go_highlight_fields=1
@@ -131,7 +133,8 @@ let g:go_highlight_functions=1
 let g:go_highlight_methods=1
 let g:go_highlight_operators=1
 let g:go_highlight_structs=1
-let g:go_fmt_command = "goimports"
+"let g:go_fmt_command = "goimports"
+let g:go_fmt_options = {'gofmt': '-s'}
 "let g:go_highlight_types=1
 "let g:go_auto_sameids=1
 "let g:go_auto_type_info=1
@@ -158,6 +161,12 @@ map! <C-a> <C-x><C-u><C-p>
 map <C-n> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 "map <C-j> :vsp<CR> <C-]>
 "map <C-k> :tab split<CR> <C-]>
+
+" PHP
+au FileType php set noexpandtab
+au FileType php set shiftwidth=8
+au FileType php set softtabstop=8
+au FileType php set tabstop=8
 
 Plugin 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ["c"], 'passive_filetypes': [] }
@@ -199,8 +208,11 @@ colorscheme molokai
 "let &t_SI = "\<Esc>[6 q"
 "let &t_SR = "\<Esc>[4 q"
 "let &t_EI = "\<Esc>[2 q"
-au InsertEnter * set cul
-au InsertLeave * set nocul
+"let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+"let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+"let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+"au InsertEnter * set cul
+"au InsertLeave * set nocul
 " Trailing whitespace are forbidden, so highlight them.
 highlight ForbiddenWhitespace guibg=red ctermbg=red
 match ForbiddenWhitespace /\s\+$/
@@ -219,10 +231,31 @@ set shiftwidth=4
 set softtabstop=4
 set cindent
 "set cinoptions=(0
+set switchbuf+=usetab,newtab
+
+
 
 " GUI Settings
 set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 highlight Search guibg=darkred
 highlight Search guifg=black
 highlight LineNr guifg=red
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+"nnoremap M :grep! '\b<C-R><C-W>\b'<CR>:cw<CR>
+nnoremap fg :grep! '\b<cword>\b'<CR>:cw<CR>
+nnoremap fd :grep! '\b<cword>\b' %:p:h/<CR>:cw<CR><CR>
+
+set cursorline
+set cursorcolumn
 

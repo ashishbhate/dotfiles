@@ -116,14 +116,14 @@ bind -x '"\C-g": clear'
 export PS1=${PS1}'$(__git_ps1 "(%s): ")'
 export GIT_PS1_SHOWDIRTYSTATE=1
 
-export GOROOT=$HOME/bin/go
-export GOBIN=$GOROOT/bin
+export GOROOT=$HOME/root/src/go
 export GOPATH=$HOME/Code/gocode
+export GOBIN=$GOPATH/bin
 
-export NODEBIN=$HOME/bin/node/bin
+export NODEBIN=$HOME/root/src/node/bin
 
 # Custom paths
-export PATH=$HOME/root/bin:$PATH:$GOBIN:$NODEBIN
+export PATH=$HOME/root/bin:$GOBIN:$GOROOT/bin:$NODEBIN:$PATH
 export PATHNOR=$PATH
 export PATHARM=/usr/arm-none-eabi/bin:$PATH
 export PATHNODE=/home/ab/Learning/LearnNode/node-v7.10.0-linux-x64/bin:$PATH
