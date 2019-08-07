@@ -13,6 +13,8 @@ set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
 set timeoutlen=300
 set ttimeoutlen=75
 set hlsearch
+set ignorecase
+set smartcase
 
 let mapleader=","
 nnoremap ; :
@@ -110,7 +112,7 @@ autocmd BufWritePost *.py call Flake8()
 
 " Go
 Plugin 'fatih/vim-go'
-"au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
@@ -125,7 +127,7 @@ au FileType go set noexpandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
-au FileType go set cc=97
+au FileType go set cc=81,97
 let g:go_highlight_build_constraints=1
 let g:go_highlight_extra_types=1
 let g:go_highlight_fields=1
@@ -133,8 +135,10 @@ let g:go_highlight_functions=1
 let g:go_highlight_methods=1
 let g:go_highlight_operators=1
 let g:go_highlight_structs=1
-"let g:go_fmt_command = "goimports"
-let g:go_fmt_options = {'gofmt': '-s'}
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
+let g:go_fmt_command = "goimports"
+"let g:go_fmt_options = {'gofmt': '-s'}
 "let g:go_highlight_types=1
 "let g:go_auto_sameids=1
 "let g:go_auto_type_info=1
@@ -182,6 +186,7 @@ let g:syntastic_c_compiler_options = "-Wall -std=gnu89"
 let g:syntastic_c_include_dirs = ["/lib/modules/4.10.0-19-generic/build/include/"]
 let g:syntastic_c_remove_include_errors = 1
 
+Plugin 'kien/ctrlp.vim'
 "
 " Make
 " Allow tabs in Makefiles.
@@ -256,6 +261,6 @@ endif
 nnoremap fg :grep! '\b<cword>\b'<CR>:cw<CR>
 nnoremap fd :grep! '\b<cword>\b' %:p:h/<CR>:cw<CR><CR>
 
-set cursorline
-set cursorcolumn
-
+" This slows down vim
+"set cursorline
+"set cursorcolumn
