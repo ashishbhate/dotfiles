@@ -55,6 +55,10 @@ https://gist.github.com/ndarville/10010916
 xset dpms force off
 
 ##
+# Change screen constrast
+xgamma -gamma 0.6
+
+##
 # Open two different versions of the same file in a diff tool using git
 git difftool -tool=meld <from-branch> <to-branch> -- <file>
 
