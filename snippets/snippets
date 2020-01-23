@@ -80,3 +80,12 @@ google-chrome --proxy-server="socks5://localhost:9000" -host-resolver-rules="MAP
 # Good enough for local VMs
 # `-o reconnect -C -o workaround=all` tells sshfs to reconnect when connection drops.
 sshfs -o reconnect -C -o workaround=all ab@agflow.local: agflow/
+
+##
+# Swap Caps Lock and Escape
+setxkbmap -option caps:swapescape
+
+##
+# Ask SSH key password
+# Add to autostart, adjust askpass based on DE
+SSH_ASKPASS=lxqt-openssh-askpass ssh-add ~/.ssh/id_rsa
