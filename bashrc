@@ -132,10 +132,6 @@ export ANDROID_TOOLS=$ANDROID_HOME/tools
 export ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
 export PATHLEARNREACT=$HOME/Learning/React-Native-Udemy/Software/node-v7.10.0-linux-x64/bin:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS:$PATH
 export MANPATH=$HOME/root/share/man:$MANPATH
-#export PATH=$PATHNOR
-#export PATHEPD64=/home/ab/Enthought/EPD/7.3-2-rh5-x64/bin:$PATH
-#export PATHEPD32=/home/ab/Enthought/EPD/7.3-2-rh5-x86/bin:$PATH
-#export PATHANA64=/home/ab/anaconda/bin:$PATH
 
 # Custom aliases
 PSN=$PS1
@@ -145,26 +141,28 @@ alias envrn='export PATH=$PATHLEARNREACT; echo $PATH; export PS1=$PS1"\[\033[1;3
 # ARM GCC
 alias envarm='export PATH=$PATHARM; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ARM\$ \[\033[00m\]"'
 
-#alias envepd64='export PATH=$PATHEPD64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD64\$ \[\033[00m\]"; alias vim="/home/ab/root/bin/vim"'
-#alias envepd32='export PATH=$PATHEPD32; echo $PATH; export PS1=$PS1"\[\033[1;31m\]EPD32\$ \[\033[00m\]"'
-#alias envana64='export PATH=$PATHANA64; echo $PATH; export PS1=$PS1"\[\033[1;31m\]ANA64\$ \[\033[00m\]"'
-# RVM shenanigans
-#alias envrvm='source $HOME/.rvm/scripts/rvm; echo $PATH; rvm use ruby-1.9.2-p320@vagrant-1.2.x; rvm use ruby-1.9.2-p320@veewee; export PS1=$PS1"\[\033[1;31m\]ENVRVM\$ \[\033[00m\]"'
-
 alias todo='vim note:todo'
 alias rl='vim note:readinglist'
 alias o='/usr/bin/xdg-open'
-#alias getip='wget -q -O - checkip.dyndns.org | sed -e "s/[^[:digit:]|.]//g"'
 alias getip='curl https://canihazip.com/s'
 alias grep="grep --color"
 alias tmux="tmux -2u"
-#alias vimepd64="/home/ab/root/bin/vim"
 alias pls='sudo $(history -p !!)'
 alias up='sudo apt update'
 alias ud='sudo apt upgrade'
-#alias vimc='/usr/bin/vim.gnome-py2'
 alias vimpy2='/usr/bin/vim.gtk-py2'
+alias nless='less -NR'
+alias gad='git add'
+alias gcm='git commit'
+alias gco='git checkout'
+alias gdi='git diff'
+alias gdc='git diff --cached'
+alias glg='git log'
+alias gst='git status'
+alias gps='git push'
+alias gpl='git pull'
 shopt -s autocd
+
 
 ######
 #export CDPATH=.:~:~/Enthought/Code
@@ -204,3 +202,17 @@ COMMAND_NOT_FOUND_AUTO=1
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='ag --hidden -f -g ""'
+
+export EDITOR='nvim'
+
+
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+#[ -f /home/ab/Code/open-bot/node_modules/tabtab/.completions/serverless.bash ] && . /home/ab/Code/open-bot/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+#[ -f /home/ab/Code/open-bot/node_modules/tabtab/.completions/sls.bash ] && . /home/ab/Code/open-bot/node_modules/tabtab/.completions/sls.bash
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+#[ -f /home/ab/Code/open-bot/node_modules/tabtab/.completions/slss.bash ] && . /home/ab/Code/open-bot/node_modules/tabtab/.completions/slss.bash
