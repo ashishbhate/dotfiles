@@ -80,3 +80,36 @@ google-chrome --proxy-server="socks5://localhost:9000" -host-resolver-rules="MAP
 # Good enough for local VMs
 # `-o reconnect -C -o workaround=all` tells sshfs to reconnect when connection drops.
 sshfs -o reconnect -C -o workaround=all ab@agflow.local: agflow/
+
+
+## Power saving
+# disable docker networking
+sudo ip link set docker0 down
+# disable docker service
+sudo systemctl stop docker.service
+# use powertop
+sudo powertop --auto-tune
+# use tlp
+sudo tlp start
+# check tlp
+sudo tlp stat
+# turn off bluetooth
+sudo rfkill block bluetooth
+# It seems webcam and bluetooth are consuming power even when disabled. Add them to the blacklist
+# webcam
+echo 'blacklist uvcvideo' | sudo tee -a /etc/modprobe.d/nowebcam.conf
+# bluetooth
+echo 'blacklist btusb' | sudo tee -a /etc/modprobe.d/nobluetooth.conf
+echo 'blacklist bluetooth' | sudo tee -a /etc/modprobe.d/nobluetooth.conf
+
+
+## Change docker storage folder
+Add the following to /etc/docker/daemon.json
+{
+    "data-root": "/overflow/docker",
+    "storage-driver": "overlay2"
+}
+
+## Change PG Data folder
+On Ubuntu change 'data_directory' in '/etc/postgresql/10/main/postgresql.conf'
+
