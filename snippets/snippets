@@ -81,7 +81,6 @@ google-chrome --proxy-server="socks5://localhost:9000" -host-resolver-rules="MAP
 # `-o reconnect -C -o workaround=all` tells sshfs to reconnect when connection drops.
 sshfs -o reconnect -C -o workaround=all ab@agflow.local: agflow/
 
-
 ## Power saving
 # disable docker networking
 sudo ip link set docker0 down
@@ -113,3 +112,11 @@ Add the following to /etc/docker/daemon.json
 ## Change PG Data folder
 On Ubuntu change 'data_directory' in '/etc/postgresql/10/main/postgresql.conf'
 
+##
+# Swap Caps Lock and Escape
+setxkbmap -option caps:swapescape
+
+##
+# Ask SSH key password
+# Add to autostart, adjust askpass based on DE
+SSH_ASKPASS=lxqt-openssh-askpass ssh-add ~/.ssh/id_rsa
