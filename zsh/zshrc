@@ -1,0 +1,79 @@
+# Set fpath
+fpath=(/home/ab/.config/zsh/completions/ $fpath)
+
+# Enable colors and change prompt:
+autoload -U colors && colors
+
+# Prompt
+source /home/ab/.config/zsh/git-prompt.sh
+setopt PROMPT_SUBST;
+export GIT_PS1_SHOWDIRTYSTATE=1
+PS1='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg[blue]%}%~ %{$fg[magenta]%}[%*]%{$reset_color%}$ $(__git_ps1 "(%s): ")'
+
+
+# History in cache directory:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+
+# Basic auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots) # Include hidden files.
+compdef _gnu_generic ag
+# Fix Make completions
+zstyle ':completion:*:*:make:*' tag-order 'targets'
+
+# Environment variables
+export MANPATH=/home/ab/root/share/man:$MANPATH
+export GOROOT=$HOME/root/src/go
+export GOPATH=$HOME/Code/gocode
+export GOBIN=$GOPATH/bin
+export NODEBIN=$HOME/root/src/node/bin
+export PATH=$HOME/root/bin:$GOBIN:$GOROOT/bin:$NODEBIN:/$HOME/root/src/fzf/bin:$PATH
+
+
+# Aliases and Keybindings
+alias getip='curl https://checkip.amazonaws.com/'
+alias gad='git add'
+alias gcm='git commit'
+alias gco='git checkout'
+alias gdi='git diff'
+alias gdc='git diff --cached'
+alias glg='git log'
+alias gst='git status'
+alias gps='git push'
+alias gpl='git pull'
+alias grep="grep --color"
+alias ll='ls -lah'
+alias ls='ls --color=auto'
+alias nless='less -NR'
+alias o='/usr/bin/xdg-open'
+alias psg='ps aux | grep -i'
+alias tmux="tmux -2u"
+bindkey "^R" history-incremental-search-backward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+bindkey '\e.' insert-last-word
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey "\e[3~" delete-char
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+backward-kill-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+}
+zle -N backward-kill-dir
+bindkey '^w' backward-kill-dir
+
+# FZF
+source $HOME/root/src/fzf/shell/completion.zsh
+source $HOME/root/src/fzf/shell/key-bindings.zsh
+
+# TODO
+# AG
+
+# Load zsh-syntax-highlighting; should be last.
+source /home/ab/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
