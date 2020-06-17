@@ -120,3 +120,12 @@ setxkbmap -option caps:swapescape
 # Ask SSH key password
 # Add to autostart, adjust askpass based on DE
 SSH_ASKPASS=lxqt-openssh-askpass ssh-add ~/.ssh/id_rsa
+
+## Keep tmux alive after logout
+1.
+In /etc/systemd/logind.conf set
+KillExcludeUsers=root YOUR_USERNAME
+KillUserProcesses=no
+
+2.
+sudo loginctl enable-linger YOUR_USERNAME
