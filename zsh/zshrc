@@ -1,38 +1,93 @@
 # Set fpath
-fpath=(/home/ab/.config/zsh/completions/ $fpath)
+fpath=($HOME/.config/zsh/completions/ $fpath)
 
 # Enable colors and change prompt:
 autoload -U colors && colors
 
 # Prompt
-source /home/ab/.config/zsh/git-prompt.sh
+source $HOME/.config/zsh/git-prompt.sh
 setopt PROMPT_SUBST;
 export GIT_PS1_SHOWDIRTYSTATE=1
-PS1='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg[blue]%}%~ %{$fg[magenta]%}[%*]%{$reset_color%}$ $(__git_ps1 "(%s): ")'
-
+PS1='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg[cyan]%}%~ %{$fg[magenta]%}[%*]%{$reset_color%}$ $(__git_ps1 "(%s): ")'
 
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+HISTFILE=$HOME/.cache/zsh/history
+setopt appendhistory     #Append history to the history file (no overwriting)
+setopt incappendhistory  #Immediately append to the history file, not just when a term is killed
+
 
 # Basic auto/tab complete:
+## don't cache completions
 autoload -U compinit
 zstyle ':completion:*' menu select
+zstyle ":completion:*:commands" rehash 1
 zmodload zsh/complist
-compinit
+compinit -u
 _comp_options+=(globdots) # Include hidden files.
 compdef _gnu_generic ag
 # Fix Make completions
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
+
 # Environment variables
-export MANPATH=/home/ab/root/share/man:$MANPATH
-export GOROOT=$HOME/root/src/go
-export GOPATH=$HOME/Code/gocode
+export ANDROID_HOME=$HOME/Library/Android/sdk
+#export ANDROID_TOOLS=$ANDROID_HOME/tools
+#export ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
+#export PATHLEARNREACT=$HOME/Learning/React-Native-Udemy/Software/node-v7.10.0-linux-x64/bin:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS:$PATH
+#
+
+#icu4c is keg-only, which means it was not symlinked into /usr/local,
+#because macOS provides libicucore.dylib (but nothing else).
+#
+#If you need to have icu4c first in your PATH run:
+#  echo 'export PATH="/usr/local/opt/icu4c/bin:$PATH"' >> ~/.zshrc
+#  echo 'export PATH="/usr/local/opt/icu4c/sbin:$PATH"' >> ~/.zshrc
+#
+#For compilers to find icu4c you may need to set:
+#  export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+#  export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+#
+
+#==> node@12
+#node@12 is keg-only, which means it was not symlinked into /usr/local,
+#because this is an alternate version of another formula.
+#
+#If you need to have node@12 first in your PATH run:
+#  echo 'export PATH="/usr/local/opt/node@12/bin:$PATH"' >> ~/.zshrc
+#
+#For compilers to find node@12 you may need to set:
+#  export LDFLAGS="-L/usr/local/opt/node@12/lib"
+#  export CPPFLAGS="-I/usr/local/opt/node@12/include"
+
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+export BUNDLE_PATH=$HOME/.gem
+export MANPATH=$HOME/Root/share/man:$MANPATH
+export GOROOT=$HOME/Root/src/go
+export GOPATH=$HOME/Code/gopath
 export GOBIN=$GOPATH/bin
-export NODEBIN=$HOME/root/src/node/bin
-export PATH=$HOME/root/bin:$GOBIN:$GOROOT/bin:$NODEBIN:/$HOME/root/src/fzf/bin:$PATH
+#export NODEBIN=/usr/local/opt/node@12/bin
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home
+path=(
+    /usr/local/opt/mysql-client/bin
+    $HOME/.rbenv/shims
+    $HOME/Root/bin
+    $GOBIN
+    $GOROOT/bin
+    #$HOME/.gem/ruby/2.5.0/bin
+    #$HOME/.gem/ruby/2.7.0/bin
+    #$HOME/.gem/ruby/2.6.0/bin
+    $ANDROID_HOME/tools/bin
+    $ANDROID_HOME/platform-tools
+    $ANDROID_HOME/emulator
+    $ANDROID_HOME/tools
+    #$NODEBIN
+    $HOME/Root/src/fzf/bin
+    $JAVA_HOME/bin
+    $path
+)
 
 
 # Aliases and Keybindings
@@ -47,12 +102,16 @@ alias gst='git status'
 alias gps='git push'
 alias gpl='git pull'
 alias grep="grep --color"
-alias ll='ls -lah'
-alias ls='ls --color=auto'
+#alias ls='ls -G'
+export CLICOLOR=1
+export EXA_COLORS="*.zip=1;35:*.tar.*=1;35"
+alias ll='exa -lagF'
+alias lx='exa'
 alias nless='less -NR'
-alias o='/usr/bin/xdg-open'
+alias o='/usr/bin/open'
 alias psg='ps aux | grep -i'
-alias tmux="tmux -2u"
+
+#alias tmux="tmux -2u"
 bindkey "^R" history-incremental-search-backward
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
@@ -69,11 +128,76 @@ zle -N backward-kill-dir
 bindkey '^w' backward-kill-dir
 
 # FZF
-source $HOME/root/src/fzf/shell/completion.zsh
-source $HOME/root/src/fzf/shell/key-bindings.zsh
+source $HOME/Root/src/fzf/shell/completion.zsh
+source $HOME/Root/src/fzf/shell/key-bindings.zsh
 
 # TODO
 # AG
 
 # Load zsh-syntax-highlighting; should be last.
-source /home/ab/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source $HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+export LC_ALL=en_US.UTF-8
+
+function wiz {
+	knownBulbs="l1 o1 b1"
+	if [[ $1 == "list" ]]
+	then
+		echo "$knownBulbs"
+		return
+	elif [[ $1 == "scan" ]]
+	then
+		echo '{"method":"getPilot","params":{}}' | socat - UDP-DATAGRAM:255.255.255.255:38899,broadcast
+		return
+	elif [[ $1 == "l1" ]]
+	then
+		bulb="192.168.0.121"
+	elif [[ $1 == "o1" ]]
+	then
+		bulb="192.168.0.122"
+	elif [[ $1 == "b1" ]]
+	then
+		bulb="192.168.0.123"
+	else
+		echo "Unknown command or bulb. Known commands: 'list', 'scan'. Known bulbs: $knownBulbs"
+		return
+	fi
+
+	if [[ $2 == "off" ]]
+	then
+		echo '{"id":1,"method":"setState","params":{"state":false}}' | nc -u -w 1 $bulb 38899
+		return
+        elif [[ $2 == "on" ]]
+	then
+		knownColours="'warm' (2700K), 'day' (4200K), 'cool' (6500K)"
+		if [[ $3 == "list" ]]
+		then
+			echo "$knownColours"
+			return
+		elif [[ $3 == "warm" ]]
+		then
+			scene=11
+		elif [[ $3 == "day" ]]
+		then
+			scene=12
+		elif [[ $3 == "cool" ]]
+		then
+			scene=13
+		else
+			echo "Unknown color or scene. Known colors: $knownColours. Only turning on bulb (likely previous state)"
+			echo '{"id":1,"method":"setState","params":{"state":true}}' | nc -u -w 1 $bulb 38899
+			return
+		fi
+		echo '{"id":1,"method":"setPilot","params":{"sceneId":'${scene}',"dimming":100}}}' | nc -u -w 1 $bulb 38899
+		return
+	else
+		echo "Unknown command. Known commands: 'off', 'on'"
+	fi
+}
