@@ -12,11 +12,11 @@ autoload -U colors && colors
 # Prompt
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '(%b%f%u%c): '
-zstyle ':vcs_info:git:*' actionformats '(%b|%a%f%u%c): '
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr ' %F{red}*%f'
-zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
+zstyle ':vcs_info:*' stagedstr ' %F{green}+%f'
+zstyle ':vcs_info:git:*' formats '(%b%f%u%c): '
+zstyle ':vcs_info:git:*' actionformats '(%b|%a%f%u%c): '
 
 setopt PROMPT_SUBST;
 PS1='%B%F{green}%n%f@%F{yellow}%m%f:%F{cyan}%~ %F{magenta}[%*]%f$ ${vcs_info_msg_0_}'
