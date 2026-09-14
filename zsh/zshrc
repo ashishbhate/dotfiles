@@ -1,14 +1,25 @@
+# Load homebrew magic
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+
 # Set fpath
-fpath=($HOME/.config/zsh/completions/ $fpath)
+# Commented out - managed through brew for most installed apps
+#fpath=($HOME/.config/zsh/completions/ $fpath)
+
 
 # Enable colors and change prompt:
 autoload -U colors && colors
 
 # Prompt
-source $HOME/.config/zsh/git-prompt.sh
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '(%b%f%u%c): '
+zstyle ':vcs_info:git:*' actionformats '(%b|%a%f%u%c): '
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr ' %F{red}*%f'
+zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
+
 setopt PROMPT_SUBST;
-export GIT_PS1_SHOWDIRTYSTATE=1
-PS1='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg[cyan]%}%~ %{$fg[magenta]%}[%*]%{$reset_color%}$ $(__git_ps1 "(%s): ")'
+PS1='%B%F{green}%n%f@%F{yellow}%m%f:%F{cyan}%~ %F{magenta}[%*]%f$ ${vcs_info_msg_0_}'
 
 # History in cache directory:
 HISTSIZE=10000
@@ -30,62 +41,16 @@ compdef _gnu_generic ag
 # Fix Make completions
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
-
-# Environment variables
-export ANDROID_HOME=$HOME/Library/Android/sdk
-#export ANDROID_TOOLS=$ANDROID_HOME/tools
-#export ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
-#export PATHLEARNREACT=$HOME/Learning/React-Native-Udemy/Software/node-v7.10.0-linux-x64/bin:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS:$PATH
-#
-
-#icu4c is keg-only, which means it was not symlinked into /usr/local,
-#because macOS provides libicucore.dylib (but nothing else).
-#
-#If you need to have icu4c first in your PATH run:
-#  echo 'export PATH="/usr/local/opt/icu4c/bin:$PATH"' >> ~/.zshrc
-#  echo 'export PATH="/usr/local/opt/icu4c/sbin:$PATH"' >> ~/.zshrc
-#
-#For compilers to find icu4c you may need to set:
-#  export LDFLAGS="-L/usr/local/opt/icu4c/lib"
-#  export CPPFLAGS="-I/usr/local/opt/icu4c/include"
-#
-
-#==> node@12
-#node@12 is keg-only, which means it was not symlinked into /usr/local,
-#because this is an alternate version of another formula.
-#
-#If you need to have node@12 first in your PATH run:
-#  echo 'export PATH="/usr/local/opt/node@12/bin:$PATH"' >> ~/.zshrc
-#
-#For compilers to find node@12 you may need to set:
-#  export LDFLAGS="-L/usr/local/opt/node@12/lib"
-#  export CPPFLAGS="-I/usr/local/opt/node@12/include"
-
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-export BUNDLE_PATH=$HOME/.gem
 export MANPATH=$HOME/Root/share/man:$MANPATH
 export GOROOT=$HOME/Root/src/go
-export GOPATH=$HOME/Code/gopath
+export GOPATH=$HOME/Projects/gopath
 export GOBIN=$GOPATH/bin
-#export NODEBIN=/usr/local/opt/node@12/bin
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home
 path=(
-    /usr/local/opt/mysql-client/bin
-    $HOME/.rbenv/shims
     $HOME/Root/bin
     $GOBIN
     $GOROOT/bin
-    #$HOME/.gem/ruby/2.5.0/bin
-    #$HOME/.gem/ruby/2.7.0/bin
-    #$HOME/.gem/ruby/2.6.0/bin
-    $ANDROID_HOME/tools/bin
-    $ANDROID_HOME/platform-tools
-    $ANDROID_HOME/emulator
-    $ANDROID_HOME/tools
-    #$NODEBIN
-    $HOME/Root/src/fzf/bin
-    $JAVA_HOME/bin
     $path
 )
 
@@ -102,11 +67,11 @@ alias gst='git status'
 alias gps='git push'
 alias gpl='git pull'
 alias grep="grep --color"
-#alias ls='ls -G'
+alias ls='ls -G'
+alias ll='ls -Glah'
 export CLICOLOR=1
 export EXA_COLORS="*.zip=1;35:*.tar.*=1;35"
-alias ll='exa -lagF'
-alias lx='exa'
+alias lx='eza -lagF'
 alias nless='less -NR'
 alias o='/usr/bin/open'
 alias psg='ps aux | grep -i'
@@ -127,21 +92,13 @@ backward-kill-dir () {
 zle -N backward-kill-dir
 bindkey '^w' backward-kill-dir
 
-# FZF
-source $HOME/Root/src/fzf/shell/completion.zsh
-source $HOME/Root/src/fzf/shell/key-bindings.zsh
+# Load FZF
+source <(fzf --zsh)
 
-# TODO
-# AG
-
-# Load zsh-syntax-highlighting; should be last.
-source $HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Load nvm
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 export LC_ALL=en_US.UTF-8
