@@ -60,3 +60,4 @@ alpha-blending = linear-corrected
 font-style-bold = false
 font-style-bold-italic = false
 font-synthetic-style = false
+shell-integration-features = sudo,ssh-terminfo,ssh-env
