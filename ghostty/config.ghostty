@@ -59,3 +59,4 @@ window-colorspace = display-p3
 alpha-blending = linear-corrected
 font-style-bold = false
 font-style-bold-italic = false
+font-synthetic-style = false
