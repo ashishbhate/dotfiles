@@ -61,3 +61,6 @@ font-style-bold = false
 font-style-bold-italic = false
 font-synthetic-style = false
 shell-integration-features = sudo,ssh-terminfo,ssh-env
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
